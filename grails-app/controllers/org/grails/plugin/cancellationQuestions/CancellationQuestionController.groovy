@@ -17,9 +17,9 @@ class CancellationQuestionController {
       response.contentType = grailsApplication.config.grails.mime.types[params.format]
       response.setHeader("Content-disposition", "attachment; filename=cancellationQuestions.${fileExtensions[params.format]}")
       List fields = [ "title", "body", "createdDate" ]
-      Map labels = [ "title":"Title", "body":"Body", "createdDate":"Created Date"]
+      Map labels = [ "createdDate":"Created Date", "title":"Title", "body":"Body" ]
       Map formatters = [ "createdDate":dateFormat ]
-      Map parameters = [ title:"Cancellation Questions", "column.widths":[0.4, 0.9, 0.2] ]
+      Map parameters = [ title:"Cancellation Questions", "column.widths":[0.2, 0.4, 0.9] ]
       exportService.export(params.format, response.outputStream, cancellationQuestions, fields, labels, formatters, parameters)
     } else {
       [cancellationQuestions: cancellationQuestions]          

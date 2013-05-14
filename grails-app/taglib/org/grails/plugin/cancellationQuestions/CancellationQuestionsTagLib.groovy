@@ -53,7 +53,13 @@ class CancellationQuestionsTagLib {
 
   def ask  = { attrs, body ->
     def cancellationQuestions = CancellationQuestion.list()
-    out << render(template: "/cancellationQuestionsTagLib/ask", model: [cancellationQuestions:cancellationQuestions, accountName:attrs.accountName, accountEmail: attrs.accountEmail, cancelUrl: attrs.cancelUrl])
+    if (cancellationQuestions) {
+      def cancelUrl = g.createLink(attrs)
+      out << render(template: "/cancellationQuestionsTagLib/ask", 
+                    model: [cancellationQuestions:cancellationQuestions, accountName:attrs.accountName, accountEmail: attrs.accountEmail, cancelUrl: cancelUrl])
+    } else {
+      out << body()
+    }
   }
 
 }

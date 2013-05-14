@@ -30,6 +30,7 @@
           <table class="results table table-bordered">
             <thead>
               <tr>
+                <th>Created</th>
                 <th>Title</th>
                 <th>Account Name</th>
                 <th>Account Email</th>
@@ -39,6 +40,7 @@
             <tbody>
             <g:each in="${cancellationAnswers}" var="cancellationAnswer">
             <tr>
+              <td>${cancellationAnswer.createdDate.format("dd MMM yyyy")}</td>
               <td><g:link action="update" id="${cancellationAnswer.id}">${cancellationAnswer.title}</g:link></td>
               <td>${cancellationAnswer.accountName}</td>
               <td>${cancellationAnswer.accountEmail}</td>

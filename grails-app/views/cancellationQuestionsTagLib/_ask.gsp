@@ -2,13 +2,14 @@
   <div class="ask-cancellation-questions">
 
     <div>
+    <h4><g:message code="cancellationQuestions.answerSelection.title" /></h4>
     <g:each in="${cancellationQuestions}">
       <div> <g:radio name="cancellationAnswer.title" data-bodyid="cancellationQuestionBody${it.id}" class="cancellation-question-title" value="${it.title}"/> <span>${it.title}</span> </div>
     </g:each>              
     </div>
-    <hr />
 
     <div class="cancellation-question-bodies hide">
+      <hr />
       <g:each in="${cancellationQuestions}">
         <div class="cancellation-question-body" id="cancellationQuestionBody${it.id}"> 
           ${it.body}

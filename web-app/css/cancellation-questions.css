@@ -1,3 +1,6 @@
 .hide {
   display: none;
 }
+.confirm-checkbox {
+  padding: 5px;
+}
