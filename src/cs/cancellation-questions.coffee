@@ -1,15 +1,40 @@
+ 
 (($) ->
+
   titleClickHandler = (event) ->
+    $(".cancellation-question-bodies:visible").slideUp()
+    $(".cancellation-question-body").hide()
     bodyId = $(this).data("bodyid")
-    $body = $("#"+bodyId).removeClass('hide').addClass("howdy")
-    console.log $body
-    $body.removeClass()
-    $body.removeClass("hide").addClass('post')
-    $body.addClass("bingo")
-    console.log $body.html()
-    $body.css("border:1px solid blue")
-    console.log document.getElementById(bodyId).className
+    $body = $("#"+bodyId).show()
+    $(".cancellation-question-bodies").slideDown()    
+  $('.cancellation-question-title').click(titleClickHandler)
 
+  submitAnswer = () ->    
+    payload = {
+      title: $("input.cancellation-question-title:checked").val()
+      body: $(".cancellation-answer-body").val()
+      accountName: window.cancellationQuestions.accountName
+      accountEmail: window.cancellationQuestions.accountEmail
+    }    
+    $.ajax({
+      type: 'POST'
+      url: "/api/cancellationAnswer"
+      data: JSON.stringify(payload)
+      dataType: "json"
+      contentType: "application/json"
+      success: handleSubmitAnswerSuccess        
+      error: handleSubmitAnswerError
+    })
+  $('.submit-cancellation-answer').click(submitAnswer)
 
-  $('.cancellationQuestionTitle').click(titleClickHandler)
+  handleSubmitAnswerSuccess = (resp) ->
+    if $("#askCancellationQuestions input[name=confirmCancel]").is(":checked")
+      window.location = window.cancellationQuestions.cancelUrl
+    else 
+      $("#askCancellationQuestions").hide()
+      $(".cancellation-confirmation").show()
+
+  handleSubmitAnswerError = (err) ->    
+    alert("Error submitting answer. #{err}")
+  
 )(jQuery)

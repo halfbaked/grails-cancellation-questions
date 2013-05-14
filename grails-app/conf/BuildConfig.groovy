@@ -33,9 +33,13 @@ grails.project.dependency.resolution = {
               ":rest-client-builder:1.0.2") {
             export = false
         }
+        test(":spock:0.7", ":code-coverage:1.2.5", ":build-test-data:2.0.3"){
+          export = false
+        }
         compile ":build-test-data:2.0.4"
         runtime ":hibernate:$grailsVersion"
         compile ":ckeditor:3.6.3.0"
-
+        compile ":resources:1.2.RC2"
+        runtime ":jquery:1.8.0"
     }
 }

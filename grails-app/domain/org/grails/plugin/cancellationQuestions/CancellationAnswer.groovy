@@ -15,6 +15,8 @@ class CancellationAnswer {
   static constraints = {
     title blank:false
     body nullable:true
+    accountName nullable:true
+    accountEmail nullable:true
   }
 
   static mapping = {

@@ -8,7 +8,6 @@ class CancellationQuestionsTagLib {
   // Is possible to specify and alternative to the Add button with the action attribute
   // Also it is possible to specify other actions in the dropdown via the body of the tag
   def addOrDownload = { attrs, body ->
-    
     out << """
       <div class="btn-group pull-right">
     """
@@ -50,12 +49,11 @@ class CancellationQuestionsTagLib {
         }
       </script>   
     """
-
   }
 
   def ask  = { attrs, body ->
     def cancellationQuestions = CancellationQuestion.list()
-    out << render(template: "/cancellationQuestionsTagLib/ask", model: [cancellationQuestions:cancellationQuestions])
+    out << render(template: "/cancellationQuestionsTagLib/ask", model: [cancellationQuestions:cancellationQuestions, accountName:attrs.accountName, accountEmail: attrs.accountEmail, cancelUrl: attrs.cancelUrl])
   }
 
 }
