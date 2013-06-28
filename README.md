@@ -30,7 +30,7 @@ The tag you need to define looks something like this
     <cancellationQuestions:ask action="cancel" controller="customerAccount" accountName="Bob Hoskins, Bob Inc" accountEmail="bobhoskins@gmail.com">
       We have no cancellation Questions for you. 
       <g:link action="justCancel" controller="customerAccount" >Just cancel</g:link>
-    </cancellationQuestions>
+    </cancellationQuestions:ask>
 
 * action - the action of the controller to be called in order to complete the cancellation process
 * controller - the controller to be called in order to complete the cancellation process
