@@ -1,4 +1,3 @@
- 
 (($) ->
 
   titleClickHandler = (event) ->
@@ -7,7 +6,7 @@
     bodyId = $(this).data("bodyid")
     $body = $("#"+bodyId).show()
     $(".cancellation-question-bodies").slideDown()    
-  $('.cancellation-question-title').click(titleClickHandler)
+  $('.cancellation-question-title input[type="radio"]').click(titleClickHandler)
 
   submitAnswer = () ->    
     payload = {
@@ -25,16 +24,21 @@
       success: handleSubmitAnswerSuccess        
       error: handleSubmitAnswerError
     })
-  $('.submit-cancellation-answer').click(submitAnswer)
+
+  submitAnswerAndClose = () ->
+    $('#confirmCancel').val('yes')
+    submitAnswer()
 
   handleSubmitAnswerSuccess = (resp) ->
-    if $("#askCancellationQuestions input[name=confirmCancel]").is(":checked")
+    if ($("#askCancellationQuestions #confirmCancel").val() == 'yes')
       window.location = window.cancellationQuestions.cancelUrl
     else 
       $("#askCancellationQuestions").hide()
       $(".cancellation-confirmation").show()
 
-  handleSubmitAnswerError = (err) ->    
+  handleSubmitAnswerError = (err) ->
     alert("Error submitting answer. #{err}")
-  
+
+  $('#askCancellationQuestions .submit-no-close').click(submitAnswer)
+  $('#askCancellationQuestions .submit-and-close').click(submitAnswerAndClose)
 )(jQuery)

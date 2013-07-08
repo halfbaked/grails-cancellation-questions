@@ -55,7 +55,7 @@ class CancellationQuestionsTagLib {
     def cancellationQuestions = CancellationQuestion.list()
     if (cancellationQuestions) {
       def cancelUrl = g.createLink(attrs)
-      out << render(template: "/cancellationQuestionsTagLib/ask", 
+      out << render(template: "/cancellationQuestionsTagLib/ask", plugin: "cancellationQuestions",
                     model: [cancellationQuestions:cancellationQuestions, accountName:attrs.accountName, accountEmail: attrs.accountEmail, cancelUrl: cancelUrl])
     } else {
       out << body()

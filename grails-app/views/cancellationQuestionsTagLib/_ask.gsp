@@ -4,26 +4,23 @@
     <div>
     <h4><g:message code="cancellationQuestions.answerSelection.title" /></h4>
     <g:each in="${cancellationQuestions}">
-      <div> <g:radio name="cancellationAnswer.title" data-bodyid="cancellationQuestionBody${it.id}" class="cancellation-question-title" value="${it.title}"/> <span>${it.title}</span> </div>
+      <div class="cancellation-question-title"> <g:radio name="cancellationAnswer.title" data-bodyid="cancellationQuestionBody${it.id}" class="cancellation-question-title" value="${it.title}"/> <span>${it.title}</span> </div>
     </g:each>              
     </div>
 
     <div class="cancellation-question-bodies hide">
       <hr />
       <g:each in="${cancellationQuestions}">
-        <div class="cancellation-question-body" id="cancellationQuestionBody${it.id}"> 
+        <div class="cancellation-question-body" id="cancellationQuestionBody${it.id}" style="margin:10px 0;"> 
           ${it.body}
         </div>
       </g:each>
-      <div>      
-        <textarea style="width:100%;" class="cancellation-answer-body">
-        </textarea>
-        <div class="confirm-checkbox">
-          <g:checkBox name="confirmCancel" />
-          <g:message code="cancellationQuestions.stillCancelCheckbox.label" />        
-        </div>
-        <div>
-        <btn class="submit-cancellation-answer btn"><g:message code="cancellationQuestions.submitBtn.label" /></btn>
+      <div>             
+        <textarea style="width:100%;" class="cancellation-answer-body"></textarea>
+        <input id="confirmCancel" type="hidden" name="confirmCancel" value="no" />
+        <div style="padding:5px;">
+        <btn class="submit-and-close btn btn-danger with-text ui-state-default ui-corner-all" style="display:inline-block;"><g:message code="cancellationQuestions.submitAndCloseBtn.label" /></btn>
+        <btn class="submit-no-close btn with-text ui-state-default ui-corner-all" style="display:inline-block;"><g:message code="cancellationQuestions.submitNoCloseBtn.label" /></btn>
         </div>
       </div>
     </div>
@@ -33,10 +30,11 @@
 <div class="cancellation-confirmation hide">
   <g:message code="cancellationQuestions.cancellationConfirmation" />
 </div>
-<r:script>
+<script>
   window.cancellationQuestions = {
     accountName: "${accountName}",
     accountEmail: "${accountEmail}",
     cancelUrl: "${cancelUrl}"
   }  
-</r:script>
+</script>
+

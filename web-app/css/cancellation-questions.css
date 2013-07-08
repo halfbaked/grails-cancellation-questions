@@ -1,6 +1,10 @@
 .hide {
   display: none;
 }
-.confirm-checkbox {
-  padding: 5px;
+input[type="radio"] {
+  margin: 0;
+  margin-right: 5px;
+}
+.cancellation-question-title {
+  margin-top: 5px;
 }

@@ -2,7 +2,7 @@
 (function() {
 
   (function($) {
-    var handleSubmitAnswerError, handleSubmitAnswerSuccess, submitAnswer, titleClickHandler;
+    var handleSubmitAnswerError, handleSubmitAnswerSuccess, submitAnswer, submitAnswerAndClose, titleClickHandler;
     titleClickHandler = function(event) {
       var $body, bodyId;
       $(".cancellation-question-bodies:visible").slideUp();
@@ -11,7 +11,7 @@
       $body = $("#" + bodyId).show();
       return $(".cancellation-question-bodies").slideDown();
     };
-    $('.cancellation-question-title').click(titleClickHandler);
+    $('.cancellation-question-title input[type="radio"]').click(titleClickHandler);
     submitAnswer = function() {
       var payload;
       payload = {
@@ -30,18 +30,23 @@
         error: handleSubmitAnswerError
       });
     };
-    $('.submit-cancellation-answer').click(submitAnswer);
+    submitAnswerAndClose = function() {
+      $('#confirmCancel').val('yes');
+      return submitAnswer();
+    };
     handleSubmitAnswerSuccess = function(resp) {
-      if ($("#askCancellationQuestions input[name=confirmCancel]").is(":checked")) {
+      if ($("#askCancellationQuestions #confirmCancel").val() === 'yes') {
         return window.location = window.cancellationQuestions.cancelUrl;
       } else {
         $("#askCancellationQuestions").hide();
         return $(".cancellation-confirmation").show();
       }
     };
-    return handleSubmitAnswerError = function(err) {
+    handleSubmitAnswerError = function(err) {
       return alert("Error submitting answer. " + err);
     };
+    $('#askCancellationQuestions .submit-no-close').click(submitAnswer);
+    return $('#askCancellationQuestions .submit-and-close').click(submitAnswerAndClose);
   })(jQuery);
 
 }).call(this);

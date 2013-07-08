@@ -41,5 +41,9 @@ grails.project.dependency.resolution = {
         compile ":ckeditor:3.6.3.0"
         compile ":resources:1.2.RC2"
         runtime ":jquery:1.8.0"
+
+        runtime(":database-migration:1.3.5"){
+          export = false
+        }
     }
 }

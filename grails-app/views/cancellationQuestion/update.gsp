@@ -40,9 +40,7 @@
                 { name: 'styles', items: [ 'Styles', 'Format', 'TextColor' ] }
               ]
               </ckeditor:config>              
-              <ckeditor:editor name="body" height="400px" width="98%" toolbar="CancellationQuestions" enterMode="CKEDITOR.ENTER_BR">
-                <%= cancellationQuestion?.body %>
-              </ckeditor:editor>
+              <ckeditor:editor name="body" height="400px" width="98%" toolbar="CancellationQuestions" enterMode="CKEDITOR.ENTER_BR"><%= cancellationQuestion?.body %></ckeditor:editor>
             </div>
             <div class="form-actions">
               <div class="pull-left">
