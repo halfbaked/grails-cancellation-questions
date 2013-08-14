@@ -1,19 +1,17 @@
 class CancellationQuestionsGrailsPlugin {
     // the plugin version
-    def version = "0.4.1"
+    def version = "0.4.2"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.1 > *"
     // the other plugins this plugin depends on
     def dependsOn = [:]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-        "grails-app/views/error.gsp"
+      "grails-app/views/error.gsp",
+      "grails-app/conf/CancellationQuestionsBootStrap.groovy"
     ]
 
-    // TODO Fill in these fields
     def title = "Cancellation Questions Plugin" // Headline display name of the plugin
-    def author = "Your name"
-    def authorEmail = ""
     def description = '''\
       Brief summary/description of the plugin.
     '''
@@ -26,11 +24,8 @@ class CancellationQuestionsGrailsPlugin {
     // License: one of 'APACHE', 'GPL2', 'GPL3'
 //    def license = "APACHE"
 
-    // Details of company behind the plugin (if there is one)
-//    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
-
-    // Any additional developers beyond the author specified above.
-//    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
+    def organization = [ name: "Stratus5", url: "http://www.stratus5.com/" ]
+    def developers = [ [ name: "Eamonn O'Connell", email: "@34m0" ]]
 
     // Location of the plugin's issue tracker.
 //    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
