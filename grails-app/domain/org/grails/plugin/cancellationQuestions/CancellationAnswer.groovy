@@ -24,4 +24,18 @@ class CancellationAnswer {
     body type:'text'
   }
 
+  def afterInsert(){
+    event(for:"cancellationQuestions", topic: "cancellationAnswerCreated", data: this)
+  }
+
+  // Returns a map representation used in email templates
+  Map asDataMap(){
+    [
+      account_name: accountName,
+      account_email: accountEmail,
+      title: title,
+      body: body
+    ]
+  }
+
 }

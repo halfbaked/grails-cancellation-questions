@@ -10,7 +10,7 @@
       <hr />
       <g:each in="${cancellationQuestions}">
         <div class="cancellation-question-body" id="cancellationQuestionBody${it.id}" style="margin:10px 0;"> 
-          ${it.body}
+          <%= it.body %>
         </div>
       </g:each>
       <div>             
