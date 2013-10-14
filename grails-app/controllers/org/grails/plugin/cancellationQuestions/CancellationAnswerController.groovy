@@ -15,6 +15,8 @@ class CancellationAnswerController {
     if(!export) params.max = 30  
     def cancellationAnswers = CancellationAnswer.createCriteria().list(params) {
         if(params.title){ ilike 'title', "%${params.title}%"}
+        if(params.accountName){ ilike 'accountName', "%${params.accountName}%"}
+        if(params.accountEmail){ ilike 'accountEmail', "%${params.accountEmail}%"}
     }
     if(export) {
       response.contentType = grailsApplication.config.grails.mime.types[params.format]
