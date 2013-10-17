@@ -19,7 +19,7 @@
           <g:form action="list" name="filters">
             <input id="formatInput" type="hidden" name="format" value="" />
             <input placeholder="accountName" type="text" name="accountName" value="${params?.accountName}" />
-            <input placeholder="accountName" type="text" name="accountEmail" value="${params?.accountEmail}" />
+            <input placeholder="accountEmail" type="text" name="accountEmail" value="${params?.accountEmail}" />
             <input placeholder="title" type="text" name="title" value="${params?.title}" />
             <input type="submit" value="Filter" class="btn" />
           </g:form>
