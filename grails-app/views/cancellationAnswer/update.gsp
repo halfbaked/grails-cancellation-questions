@@ -30,7 +30,7 @@
                 <label>Title</label>
                 <input style="width:98%" type="text" name="title" value="${cancellationAnswer?.title}" />
               </div>
-              <textarea name="title" style="width:98%">${cancellationAnswer?.body}</textarea>
+              <textarea name="body" style="width:98%">${cancellationAnswer?.body}</textarea>
             </div>
             <div class="form-actions">
               <div class="pull-left">
